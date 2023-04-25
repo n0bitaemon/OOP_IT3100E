@@ -1,0 +1,2 @@
+- If we choose "Cancle", then the program will show a dialog containing the message "You've chosen: No"
+- To customize the options to users, we just need to change two strong "Yes" => "I do" and "No" => "I don't"
