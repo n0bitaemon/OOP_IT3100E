@@ -106,6 +106,17 @@ public class DigitalVideoDisc {
 		return String.format("DVD - %s - %s - %s - %d: %.2f $", _title, _category, _director, _length, _price);
 	}
 	
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		if(obj == null || getClass() != obj.getClass()) return false;
+		DigitalVideoDisc disc_obj = (DigitalVideoDisc) obj;
+		return getId() == disc_obj.getId() && getTitle().equals(disc_obj.getTitle()) 
+				&& getCategory().equals(disc_obj.getTitle())
+				&& getDirector() == disc_obj.getDirector()
+				&& getLength() == disc_obj.getLength()
+				&& getCost() == disc_obj.getCost();
+	}
+	
 }
 
 
