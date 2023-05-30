@@ -1,0 +1,6 @@
+1) After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain? 
+=> In this swap function, o1 and o2 is only local copy of jungleDVD and cinderellaDVD objects.
+
+2) After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed? 
+=> Although dvd is just a copy of jungleDVD, it still points to getTitle() method of the original reference.
+
