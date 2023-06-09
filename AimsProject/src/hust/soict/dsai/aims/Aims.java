@@ -1,9 +1,42 @@
 package hust.soict.dsai.aims;
 
+import java.util.Scanner;
+
 public class Aims {
 
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int option;
+		int menu = 1; //1: Main, 2: Store, 3: MediaDetail, 4: Cart
 		
+		while(true) {
+			System.out.println("Your option: ");
+			option = sc.nextInt();
+			if(option == 0) {
+				if(menu == 1) {
+					break;
+				}else {
+					menu = 1;
+					continue;
+				}
+			}
+			
+			if(menu == 1) {
+				switch (option) {
+				case 1: {
+					System.out.println("View store");
+					menu = 2;
+					break;
+				}
+				case 2: {
+					System.out.println("Update store");
+					break;
+				}
+				default:
+					throw new IllegalArgumentException("Unexpected value: " + option);
+				}
+			}
+		}
 	}
 	
 	public static void showMenu() {
