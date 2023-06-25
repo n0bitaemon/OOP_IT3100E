@@ -9,27 +9,27 @@ public class CompactDisc extends Disc implements Playable {
 	
 	public CompactDisc() {
 		super();
-		assignId();
 	}
 	
 	public CompactDisc(String title) {
 		super(title);
-		assignId();
 	}
 	
 	public CompactDisc(String title, String category, float cost) {
 		super(title, category, cost);
-		assignId();
 	}
 	
 	public CompactDisc(String title, String category, String director, float cost) {
 		super(title, category, director, cost);
-		assignId();
 	}
 
 	public CompactDisc(String title, String category, String director, int length, float cost) {
 		super(title, category, director, length, cost);
-		assignId();
+	}
+	
+	public CompactDisc(String title, String category, String director, int length, float cost, List<Track> tracks) {
+		super(title, category, director, length, cost);
+		this.tracks = tracks;
 	}
 	
 	public void addTrack(Track track) {
