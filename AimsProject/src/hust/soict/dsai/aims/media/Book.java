@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Media {
-	private static int nbBook = 0;
 	private List<String> authors = new ArrayList<String>();
 	
 	public Book() {
@@ -22,11 +21,6 @@ public class Book extends Media {
 		assignId();
 	}
 	
-	public void assignId() {
-		nbBook++;
-		setId(nbBook);
-	}
-	
 	public void addAuthor(String authorName) {
 		if(authors.contains(authorName)) {
 			System.out.println("This author is already assigned in this book.");
@@ -41,5 +35,22 @@ public class Book extends Media {
 			return;
 		}
 		authors.remove(authorName);
+	}
+	
+	public String toString() {
+		String _title = getTitle() == null ? "" : getTitle();
+		String _category = getCategory() == null ? "" : getCategory();
+		StringBuilder _authors = new StringBuilder();
+		for (String author : authors) {
+			_authors.append(author);
+			_authors.append("; ");
+		}
+		float _price = getCost();
+		
+		return String.format("******Book******\n"
+				+ "Title: %s\n"
+				+ "Category: %s\n"
+				+ "Authors: %s\n"
+				+ "Price: %.2f $\n", _title, _category, _authors, _price);
 	}
 }

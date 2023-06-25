@@ -1,8 +1,7 @@
 package hust.soict.dsai.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
-	private static int nbDigitalVideoDisc = 0;
-	
+
 	public DigitalVideoDisc() {
 		super();
 		assignId();
@@ -28,21 +27,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		assignId();
 	}
 	
-	public void assignId() {
-		nbDigitalVideoDisc++;
-		setId(nbDigitalVideoDisc);
-	}
-	
-	public String toString() {
-		String _title = getTitle() == null ? "" : getTitle();
-		String _category = getCategory() == null ? "" : getCategory();
-		String _director = getDirector() == null ? "" : getDirector();
-		int _length = getLength();
-		float _price = getCost();
-		
-		return String.format("DVD - %s - %s - %s - %d: %.2f $", _title, _category, _director, _length, _price);
-	}
-	
 	public boolean equals(Object obj) {
 		if(this == obj) return true;
 		if(obj == null || getClass() != obj.getClass()) return false;
@@ -57,6 +41,21 @@ public class DigitalVideoDisc extends Disc implements Playable {
 	@Override
 	public void play() {
 		System.out.println("Play DVD: " + getTitle());
+	}
+	
+	public String toString() {
+		String _title = getTitle() == null ? "" : getTitle();
+		String _category = getCategory() == null ? "" : getCategory();
+		String _director = getDirector() == null ? "" : getDirector();
+		int _length = getLength();
+		float _price = getCost();
+		
+		return String.format("*****DVD*****\n"
+				+ "Title: %s\n"
+				+ "Category: %s\n"
+				+ "Director: %s\n"
+				+ "Length: %d\n"
+				+ "Price: %.2f $\n", _title, _category, _director, _length, _price);
 	}
 	
 }

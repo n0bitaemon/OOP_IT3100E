@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class CompactDisc extends Disc implements Playable {
-	private static int nbCompactDisc = 0;
 	private List<Track> tracks = new ArrayList<Track>();
 	
 	public CompactDisc() {
@@ -31,11 +30,6 @@ public class CompactDisc extends Disc implements Playable {
 	public CompactDisc(String title, String category, String director, int length, float cost) {
 		super(title, category, director, length, cost);
 		assignId();
-	}
-	
-	public void assignId() {
-		nbCompactDisc++;
-		setId(nbCompactDisc);
 	}
 	
 	public void addTrack(Track track) {
@@ -69,16 +63,6 @@ public class CompactDisc extends Disc implements Playable {
 		return length;
 	}
 	
-	public String toString() {
-		String _title = getTitle() == null ? "" : getTitle();
-		String _category = getCategory() == null ? "" : getCategory();
-		String _director = getDirector() == null ? "" : getDirector();
-		int _length = getLength();
-		float _price = getCost();
-		
-		return String.format("CD - %s - %s - %s - %d: %.2f $", _title, _category, _director, _length, _price);
-	}
-	
 	public boolean equals(Object obj) {
 		if(this == obj) return true;
 		if(obj == null || getClass() != obj.getClass()) return false;
@@ -97,5 +81,26 @@ public class CompactDisc extends Disc implements Playable {
 		for (Track track : tracks) {
 			track.play();
 		}
+	}
+	
+	public String toString() {
+		String _title = getTitle() == null ? "" : getTitle();
+		String _category = getCategory() == null ? "" : getCategory();
+		String _director = getDirector() == null ? "" : getDirector();
+		StringBuilder _tracks = new StringBuilder();
+		for (Track track : tracks) {
+			_tracks.append(track.getTitle());
+			_tracks.append("; ");
+		}
+		int _length = getLength();
+		float _price = getCost();
+		
+		return String.format("*****CD*****\n"
+				+ "Title: %s\n"
+				+ "Category: %s\n"
+				+ "Director: %s\n"
+				+ "Length: %d\n"
+				+ "Tracks: %s\n"
+				+ "Price: %.2f $\n", _title, _category, _director, _length, _tracks, _price);
 	}
 }

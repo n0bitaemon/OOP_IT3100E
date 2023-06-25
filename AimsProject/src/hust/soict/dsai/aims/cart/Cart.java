@@ -2,15 +2,18 @@ package hust.soict.dsai.aims.cart;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import hust.soict.dsai.aims.media.Media;
 
 public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private List<Media> itemsOrdered = new ArrayList<Media>();
+	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 
+	public ArrayList<Media> getItemsOrdered(){
+		return this.itemsOrdered;
+	}
+	
 	public void addMedia(Media media) {
 		for (Media mediaInList : itemsOrdered) {
 			if(mediaInList == media) {
@@ -45,27 +48,27 @@ public class Cart {
 		return total;
 	}
 	
-//	public DigitalVideoDisc searchDVDById(int id) {
-//		for(int i = 0; i < getQtyOrdered(); i++) {
-//			DigitalVideoDisc disc = getItemsOrdered()[i];
-//			if(disc.getId() == id) {
-//				return disc;
-//			}
-//		}
-//		System.out.println("No disk found with id: " + id);
-//		return null;
-//	}
-//	
-//	public DigitalVideoDisc searchDVDByTitle(String title) {
-//		for(int i = 0; i < getQtyOrdered(); i++) {
-//			DigitalVideoDisc disc = getItemsOrdered()[i];
-//			if(disc.getTitle().equals(title)) {
-//				return disc;
-//			}
-//		}
-//		System.out.println("No disk found with title: " + title);
-//		return null;
-//	}
+	public Media searchMediaById(int id) {
+		for(int i = 0; i < itemsOrdered.size(); i++) {
+			Media media = itemsOrdered.get(i);
+			if(media.getId() == id) {
+				return media;
+			}
+		}
+		System.out.println("No media found with id: " + id);
+		return null;
+	}
+	
+	public Media searchMediaByTitle(String title){
+		for(int i = 0; i < itemsOrdered.size(); i++) {
+			Media media = getItemsOrdered().get(i);
+			if(media.getTitle().equals(title)) {
+				return media;
+			}
+		}
+		System.out.println("No media found with title: " + title);
+		return null;
+	}
 	
 	public void printOrder() {
 		System.out.println("***********************CART***********************");

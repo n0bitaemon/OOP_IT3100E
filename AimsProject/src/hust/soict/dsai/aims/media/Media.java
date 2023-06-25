@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.media;
 import java.util.Comparator;
 
 public abstract class Media {
+	private static int nbMedia = 0;
 	
 	public static final Comparator<Media> COMPARE_BY_TITLE_COST = Comparator.comparing(Media::getTitle).thenComparing(Media::getCost);
 	public static final Comparator<Media> COMPARE_BY_COST_TITLE = Comparator.comparing(Media::getCost).thenComparing(Media::getTitle);
@@ -13,17 +14,24 @@ public abstract class Media {
 	private float cost;
 	
 	public Media() {
-		
+		assignId();
 	}
 	
 	public Media(String title) {
 		setTitle(title);;
+		assignId();
 	}
 	
 	public Media(String title, String category, float cost) {
 		setTitle(title);
 		setCategory(category);
 		setCost(cost);
+		assignId();
+	}
+	
+	public void assignId() {
+		nbMedia++;
+		setId(nbMedia);
 	}
 	
 	public int getId() {

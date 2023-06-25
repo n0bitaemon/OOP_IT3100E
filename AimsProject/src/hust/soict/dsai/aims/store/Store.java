@@ -34,6 +34,17 @@ public class Store {
 		}
 	}
 	
+	public Media searchMediaByTitle(String title){
+		for(int i = 0; i < itemsInStore.size(); i++) {
+			Media media = getItemsInStore().get(i);
+			if(media.getTitle().equals(title)) {
+				return media;
+			}
+		}
+		System.out.println("No media found with title: " + title);
+		return null;
+	}
+	
 	public void printStore() {
 		System.out.println("***********************STORE***********************");
 		System.out.println("Store Items:");
