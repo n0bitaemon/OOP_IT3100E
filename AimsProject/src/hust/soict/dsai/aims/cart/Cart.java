@@ -12,7 +12,7 @@ public class Cart {
 	
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-	FilteredList<Media> filteredItems = new FilteredList<>(itemsOrdered, m->true);
+//	FilteredList<Media> filteredItems = new FilteredList<>(itemsOrdered, m->true);
 
 	public ArrayList<Media> getItemsOrdered(){
 		return this.itemsOrdered;
@@ -89,31 +89,31 @@ public class Cart {
 		itemsOrdered.clear();
 	}
 
-	public void filterCart(String title, boolean type) 
-    {
-        if (title == null || title.length() == 0) 
-        {
-            filteredItems.setPredicate(m->true);
-        } 
-        else 
-        {
-            if (type) 
-            {
-                try 
-                {
-                    int idValue = Integer.parseInt(title);
-                    filteredItems.setPredicate(m->m.getId() == idValue);
-                } 
-                catch (NumberFormatException e) 
-                {
-                    System.out.println("The id value is invalid!");
-                }
-            } 
-            else 
-            {
-                filteredItems.setPredicate(m->m.getTitle().contains(title));
-            }
-
-        }
-    }
+//	public void filterCart(String title, boolean type) 
+//    {
+//        if (title == null || title.length() == 0) 
+//        {
+//            filteredItems.setPredicate(m->true);
+//        } 
+//        else 
+//        {
+//            if (type) 
+//            {
+//                try 
+//                {
+//                    int idValue = Integer.parseInt(title);
+//                    filteredItems.setPredicate(m->m.getId() == idValue);
+//                } 
+//                catch (NumberFormatException e) 
+//                {
+//                    System.out.println("The id value is invalid!");
+//                }
+//            } 
+//            else 
+//            {
+//                filteredItems.setPredicate(m->m.getTitle().contains(title));
+//            }
+//
+//        }
+//    }
 }
