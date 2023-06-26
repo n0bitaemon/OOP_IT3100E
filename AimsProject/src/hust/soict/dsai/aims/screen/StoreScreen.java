@@ -187,7 +187,7 @@ public class StoreScreen extends JFrame {
         tracks.add(track1);
         tracks.add(track2);
 
-        Media cd = new CompactDisc("hello world", "hard movie", "NDT", 32, 29.3f, tracks);
+        Media cd = new CompactDisc("First Media", "intro", "Kalikali", 26, 21.13f, tracks);
 
         List<String> authors = new ArrayList<>();
         authors.add("John Wohleben");
