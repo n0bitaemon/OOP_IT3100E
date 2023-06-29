@@ -1,24 +1,21 @@
 package hust.soict.dsai.aims.store;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Store {
-	private ArrayList<Media> itemsInStore;
-	
-	public Store() {
-		itemsInStore = new ArrayList<Media>();
-	}
-	
-	public ArrayList<Media> getItemsInStore() {
-		return itemsInStore;
-	}
+	private ObservableList<Media> itemsInStore;
 
-	public void setItemsInStore(ArrayList<Media> itemsInStore) {
-		this.itemsInStore = itemsInStore;
-	}
+    public Store() {
+        itemsInStore = FXCollections.observableArrayList();
+    }
+	
+    public ObservableList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
 
 	public void addMedia(Media media) {
 		if(media != null)

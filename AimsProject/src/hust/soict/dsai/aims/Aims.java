@@ -230,7 +230,6 @@ public class Aims {
 				case 2: {
 					sortCartMenu();
 					int sort_option;
-					ArrayList<Media> mediasInCart = cart.getItemsOrdered();
 					
 					try {
 						sort_option = Integer.parseInt(sc.nextLine());
@@ -240,9 +239,9 @@ public class Aims {
 					}
 					
 					if(sort_option == 1) {
-						Collections.sort(mediasInCart, Media.COMPARE_BY_TITLE_COST);
+						Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_TITLE_COST);
 					}else if(sort_option == 2) {
-						Collections.sort(mediasInCart, Media.COMPARE_BY_COST_TITLE);
+						Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_COST_TITLE);
 					}else if(sort_option == 0){
 						continue;
 					}else {
@@ -250,7 +249,7 @@ public class Aims {
 						continue;
 					}
 
-					for (Media media : mediasInCart) {
+					for (Media media : cart.getItemsOrdered()) {
 						System.out.println(media);
 					}
 					break;

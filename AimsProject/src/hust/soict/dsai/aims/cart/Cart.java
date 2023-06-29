@@ -1,22 +1,21 @@
 package hust.soict.dsai.aims.cart;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+
+import hust.soict.dsai.aims.media.Media;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
-import hust.soict.dsai.aims.media.Media;
-
 public class Cart {
-	
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-//	FilteredList<Media> filteredItems = new FilteredList<>(itemsOrdered, m->true);
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();//	FilteredList<Media> filteredItems = new FilteredList<>(itemsOrdered, m->true);
 
-	public ArrayList<Media> getItemsOrdered(){
-		return this.itemsOrdered;
-	}
+    FilteredList<Media> filteredItems = new FilteredList<>(itemsOrdered, m->true);
+
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
 	
 	public void addMedia(Media media) {
 		for (Media mediaInList : itemsOrdered) {
@@ -51,6 +50,34 @@ public class Cart {
 		
 		return total;
 	}
+	
+	public void filterCart(String title, boolean type) 
+    {
+        if (title == null || title.length() == 0) 
+        {
+            filteredItems.setPredicate(m->true);
+        } 
+        else 
+        {
+            if (type) 
+            {
+                try 
+                {
+                    int idValue = Integer.parseInt(title);
+                    filteredItems.setPredicate(m->m.getId() == idValue);
+                } 
+                catch (NumberFormatException e) 
+                {
+                    System.out.println("The id value is invalid!");
+                }
+            } 
+            else 
+            {
+                filteredItems.setPredicate(m->m.getTitle().contains(title));
+            }
+
+        }
+    }
 	
 	public Media searchMediaById(int id) {
 		for(int i = 0; i < itemsOrdered.size(); i++) {
@@ -88,32 +115,4 @@ public class Cart {
 	public void clear() {
 		itemsOrdered.clear();
 	}
-
-//	public void filterCart(String title, boolean type) 
-//    {
-//        if (title == null || title.length() == 0) 
-//        {
-//            filteredItems.setPredicate(m->true);
-//        } 
-//        else 
-//        {
-//            if (type) 
-//            {
-//                try 
-//                {
-//                    int idValue = Integer.parseInt(title);
-//                    filteredItems.setPredicate(m->m.getId() == idValue);
-//                } 
-//                catch (NumberFormatException e) 
-//                {
-//                    System.out.println("The id value is invalid!");
-//                }
-//            } 
-//            else 
-//            {
-//                filteredItems.setPredicate(m->m.getTitle().contains(title));
-//            }
-//
-//        }
-//    }
 }
